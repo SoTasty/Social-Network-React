@@ -1,0 +1,18 @@
+.item {
+  background-color: bisque;
+  color: black;
+  padding-left: 10px;
+}
+
+.item img {
+  width: 80px;
+  height: 80px;
+}
+
+.posts {
+  background-color: blue;
+}
+
+.postsBlock {
+  
+}
