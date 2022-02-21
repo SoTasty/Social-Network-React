@@ -1,0 +1,29 @@
+
+  
+  .cofee {
+    height: 100px;
+    width: 200px;
+  }
+
+
+  .dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+  }
+
+  .dialogsItems  {
+
+  }
+
+
+  .dialog {
+    text-decoration: none;
+  }
+
+  .messages {
+
+  }
+
+  .message {
+
+  }
