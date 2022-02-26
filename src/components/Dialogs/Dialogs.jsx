@@ -24,22 +24,21 @@ const Dialogs = (props) => {
     // ]
 
         // let newMessageElement = React.createRef();
-    let dialogsElements = props.dialogs.map(d => <DialogItem name={d.name} id={d.id} /> );
+    let dialogsElements = props.dialogsPage.dialogs.map(d => <DialogItem name={d.name} id={d.id} /> );
 
-    let messagesElements = props.messages.map (m => <Message message={m.message} id={m.id} />);
+    let messagesElements = props.dialogsPage.messages.map (m => <Message message={m.message} id={m.id} />);
 
-    let newMessageBody = props.store._state.dialogsPage.newMessageBody
+    let newMessageBody = props.dialogsPage.newMessageBody
 
     let onSendMessageClick = () => {
-        props.store.dispatch(sendMessageCreator())
+        props.sendMessage()
     }
 
     let onNewMessageChange = (e) => {
         let body = e.target.value
-        props.store.dispatch(updateNewMessageBodyCreator(body))
+        props.updateNewMessageBody(body)
     }
 
-   
 
     // let onMessageChange = () => {
     //     let text = newMessageElement.current.value
