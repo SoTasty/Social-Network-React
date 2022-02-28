@@ -1,14 +1,20 @@
+import { act } from "react-dom/cjs/react-dom-test-utils.production.min"
+
 const FOLLOWED = 'FOLLOWED'
 const UNFOLLOWED = "UNFOLLOWED"
 const SET_USERS = "SET_USERS"
+const SET_CURRENT_PAGE = "SET_CURRENT_PAGE"
 
 let initialState = {
     users: [
-        { id: 1, followed:true, status: "coffee please!", name: "Barista1", location: {country: "Russia", city: "Moscow", photoUrl: 'https://coffeeman.kz/wp-content/uploads/2018/05/coffeeman.kz_.png'}}, 
-        { id: 2, followed:true, status: "coffee please!", name: "Barista2", location: {country: "Kazakhstan", city: "Nur-Sultan", photoUrl: 'https://coffeeman.kz/wp-content/uploads/2018/05/coffeeman.kz_.png'}},
-        { id: 3, followed:false, status: "coffee please!", name: "Barista3", location: {country: "Russia", city: "Moscow", photoUrl: 'https://coffeeman.kz/wp-content/uploads/2018/05/coffeeman.kz_.png'}}, 
-        { id: 4, followed:true, status: "coffee please!", name: "Barista4", location: {country: "Kazakhstan", city: "Shymkent", photoUrl: 'https://coffeeman.kz/wp-content/uploads/2018/05/coffeeman.kz_.png'}}, 
-    ]
+      //  { id: 1, followed:true, status: "coffee please!", name: "Barista1", location: {country: "Russia", city: "Moscow", photoUrl: 'https://coffeeman.kz/wp-content/uploads/2018/05/coffeeman.kz_.png'}}, 
+      //  { id: 2, followed:true, status: "coffee please!", name: "Barista2", location: {country: "Kazakhstan", city: "Nur-Sultan", photoUrl: 'https://coffeeman.kz/wp-content/uploads/2018/05/coffeeman.kz_.png'}},
+     //   { id: 3, followed:false, status: "coffee please!", name: "Barista3", location: {country: "Russia", city: "Moscow", photoUrl: 'https://coffeeman.kz/wp-content/uploads/2018/05/coffeeman.kz_.png'}}, 
+     //    { id: 4, followed:true, status: "coffee please!", name: "Barista4", location: {country: "Kazakhstan", city: "Shymkent", photoUrl: 'https://coffeeman.kz/wp-content/uploads/2018/05/coffeeman.kz_.png'}}, 
+    ],
+    pageSize: 5,
+    totalUsersCount: 10,
+    currentPage: 1
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -39,6 +45,11 @@ const usersReducer = (state = initialState, action) => {
                 ...state, users: [...state.users, ...action.users]
             }
         }
+        case SET_CURRENT_PAGE: {
+            return {
+                ...state, currentPage: action.currentPage
+            }
+        }
         default: 
             return state
     }
@@ -47,5 +58,6 @@ const usersReducer = (state = initialState, action) => {
 export const followAC = (userId) => ({type: FOLLOWED, userId})
 export const unfollowAC = (userId) => ({type: UNFOLLOWED, userId})
 export const setUsersAC = (users) => ({type: SET_USERS, users})
+export const setCurrentPageAC = (currentPage) => ({ type:SET_CURRENT_PAGE, currentPage  })
 
 export default usersReducer
