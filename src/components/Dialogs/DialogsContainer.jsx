@@ -26,7 +26,7 @@ let mapDispatchToProps = (dispatch) => {
     }
 }
 
-debugger
+
 
 const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
 
